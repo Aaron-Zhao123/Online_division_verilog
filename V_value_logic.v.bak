@@ -1,0 +1,8 @@
+module V_value_logic(v_upper_plus,v_upper_minus,STATE,cin,cout);
+
+input[5:0] v_upper_plus,v_upper_minus;
+input[1:0] cin;
+input[1:0] STATE;
+output[1:0] cout;
+
+

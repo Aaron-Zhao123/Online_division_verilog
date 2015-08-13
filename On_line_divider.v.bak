@@ -1,0 +1,10 @@
+On_line_divider(x,d,q,x_vec,d_vec);
+
+input[1:0] x,d;
+
+output[1:0] q; 
+output[3:0] x_vec,d_vec;
+
+
+
+
