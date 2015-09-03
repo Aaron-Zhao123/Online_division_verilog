@@ -1,7 +1,7 @@
-module single_clk_ram(data,write_addr,read_addr,we,clk,q
+module single_clk_ram_2bit(data,write_addr,read_addr,we,clk,q
 );
 
-parameter DATA_WIDTH=8;
+parameter DATA_WIDTH=2;
 parameter ADDR_WIDTH=7;
 input[(DATA_WIDTH-1):0] data;
 input[(ADDR_WIDTH-1):0] write_addr;
@@ -19,7 +19,7 @@ integer i;
 
 initial begin
 	for (i=0;i<2**ADDR_WIDTH;i=i+1) begin
-		mem[i]<=8'b0;
+		mem[i]<=2'b0;
 	end
 	addr_reg<=7'b0;
 end

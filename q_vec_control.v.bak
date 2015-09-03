@@ -1,0 +1,43 @@
+module q_vec_control(cnt_master,computation_cycle,clk,q_vec_in_plus,q_vec_in_minus,STATE,q_vec_out_plus,q_vec_out_minus);
+input[3:0] q_vec_in_plus,q_vec_in_minus;
+input[8:0] cnt_master;
+input[1:0] STATE;
+input clk;
+input[6:0] computation_cycle;
+output[3:0] q_vec_out_plus,q_vec_out_minus;
+
+reg[3:0] q_delayed_plus,q_delayed_minus;
+
+initial begin
+	q_delayed_plus<=4'b0;
+	q_delayed_minus<=4'b0;
+	q_vec_out_plus<=4'b0;
+	q_vec_out_minus<=4'b0;
+end
+
+always@(clk) begin
+	q_delayed_plus<=q_vec_in_plus;
+	q_delayed_minus<=q_vec_in_minus;
+end
+
+always@(*) begin
+	if(STATE==2'b10) begin
+		if(computation_cycle==7'b0||cnt_master==9'b100) begin
+			q_vec_out_plus<=q_delayed_plus;
+			q_vec_out_minus<=q_delayed_plus;
+		end
+		else begin
+			q_vec_out_plus<=q_vec_in_plus;
+			q_vec_out_minus<=q_vec_in_minus;
+		end
+	end
+	else if (STATE==2'b01) begin
+			q_vec_out_plus<=q_delayed_plus;
+			q_vec_out_minus<=q_delayed_plus;
+			end
+			else begin
+				q_vec_out_plus<=q_vec_in_plus;
+				q_vec_out_minus<=q_vec_in_minus;
+			end
+end
+

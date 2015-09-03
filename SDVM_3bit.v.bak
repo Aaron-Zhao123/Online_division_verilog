@@ -1,7 +1,7 @@
 module SDVM(clk,vec_in_plus,vec_in_minus, digit_select, vec_out_plus,vec_out_minus);
 
 input clk;
-parameter Num_bits=4;
+parameter Num_bits=3;
 input [Num_bits-1:0] vec_in_plus,vec_in_minus;
 input[1:0] digit_select;
 output [Num_bits-1:0] vec_out_plus,vec_out_minus;
